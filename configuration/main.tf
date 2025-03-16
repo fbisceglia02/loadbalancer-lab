@@ -58,7 +58,7 @@ resource "azurerm_virtual_network" "main" {
 locals {
   # vm subnet id will be used when creating the vm, to assign it to the vm subnet.
   vm_subnet_id = [
-    for s in azurerm_virtuazurerm_virtual_network.main.subnet : s.id
+    for s in azurerm_virtual_network.main.subnet : s.id
     if s.name == "VM"
   ][0]
 }
