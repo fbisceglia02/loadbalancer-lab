@@ -64,17 +64,18 @@ locals {
 }
 
 resource "azurerm_network_interface" "vm_nic" {
-  count                             = var.vm_count # the count of vm defined
-  name                              = format("nic-%s", azurerm_windows_virtual_machine.example[count.index].name)
-  location                          = var.location
-  resource_group_name               = azurerm_resource_group.main.name
+  count               = var.vm_count
+  name                = format("nic-VM-%02d", count.index + 1)
+  location            = var.location
+  resource_group_name = azurerm_resource_group.main.name
 
   ip_configuration {
-    name                            = var.nic_ip_config_name # "internal"
-    subnet_id                       = local.vm_subnet_id
-    private_ip_address_allocation   = var.nic_private_ip_address_allocation_# "Dynamic"
+    name                          = var.nic_ip_config_name
+    subnet_id                     = local.vm_subnet_id
+    private_ip_address_allocation = var.nic_private_ip_address_allocation_
   }
 }
+
 
 resource "azurerm_windows_virtual_machine" "example" {
   count                             = var.vm_count
