@@ -2,7 +2,7 @@
 # General Variable Values #
 ###########################
 
-location                    = "italynorth"
+location                            = "italynorth"
 
 ##################################
 # Resource Group Variable Values #
